@@ -44,3 +44,7 @@ Choose theme by adding one of the options to `.tmux.conf`:
 - `set -g @tmux-statusline-theme 'solarized-light'`
 - `set -g @tmux-statusline-theme 'solarized-dark'`
 - `set -g @tmux-statusline-theme 'two-firewatch-dark'`
+
+## ⚖ License
+
+[MIT license](LICENSE)
