@@ -16,10 +16,12 @@
 <summary>📦 Manual Installation</summary>
 
 1. Clone the repo:
+
    ```sh
    git clone https://github.com/jeircul/tmux-themes ~/.config/tmux/plugins/
    ```
 2. Add this line to the bottom of `.tmux.conf`:
+
    ```tmux
    run-shell ~/.config/tmux/plugins/tmux-themes/themes.tmux
    ```
