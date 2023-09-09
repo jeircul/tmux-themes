@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 tokyonight_black="#1a1b26"
 tokyonight_purple="#9a7ecc"
 tokyonight_yellow="#e0af68"
@@ -8,30 +6,6 @@ tokyonight_white="#acb0d0"
 tokyonight_green="#7aa2f7"
 tokyonight_visual_grey="#4e5173"
 tokyonight_comment_grey="#acb0d0"
-
-get() {
-   local option=$1
-   local default_value=$2
-   local option_value="$(tmux show-option -gqv "$option")"
-
-   if [ -z "$option_value" ]; then
-      echo "$default_value"
-   else
-      echo "$option_value"
-   fi
-}
-
-set() {
-   local option=$1
-   local value=$2
-   tmux set-option -gq "$option" "$value"
-}
-
-setw() {
-   local option=$1
-   local value=$2
-   tmux set-window-option -gq "$option" "$value"
-}
 
 set "status" "on"
 set "status-justify" "left"
