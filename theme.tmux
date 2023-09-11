@@ -6,9 +6,10 @@ theme_option="@tmux-themes"
 default_theme="tokyonight-night"
 
 get_tmux_option() {
-	local option="$1"
-	local default_value="$2"
-	local option_value="$(tmux show-option -gqv "$option")"
+	local option default_value option_value
+	option="$1"
+	default_value="$2"
+	option_value="$(tmux show-option -gqv "$option")"
 	if [ -z "$option_value" ]; then
 		echo "$default_value"
 	else
@@ -17,7 +18,8 @@ get_tmux_option() {
 }
 
 main() {
-	local theme="$(get_tmux_option "$theme_option" "$default_theme")"
+	local theme
+	theme="$(get_tmux_option "$theme_option" "$default_theme")"
 	tmux source-file "$CURRENT_DIR/themes/${theme}.tmuxtheme"
 }
 
