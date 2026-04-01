@@ -2,7 +2,7 @@
 
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-theme_option="@tmux-themes"
+theme_option="@tmux-statusline-theme"
 default_theme="tokyonight-night"
 
 get_tmux_option() {
@@ -18,9 +18,17 @@ get_tmux_option() {
 }
 
 main() {
-	local theme
+	local theme theme_file
 	theme="$(get_tmux_option "$theme_option" "$default_theme")"
-	tmux source-file "$CURRENT_DIR/themes/${theme}.tmuxtheme"
+	theme_file="$CURRENT_DIR/themes/${theme}.tmuxtheme"
+
+	if [ ! -f "$theme_file" ]; then
+		tmux display-message "tmux-themes: unknown theme '${theme}'. Check available themes in ~/.tmux.conf."
+		# Fall back to default so tmux stays functional
+		theme_file="$CURRENT_DIR/themes/${default_theme}.tmuxtheme"
+	fi
+
+	tmux source-file "$theme_file"
 }
 
 main
