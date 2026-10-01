@@ -23,7 +23,7 @@ set -g status-right-style NONE
 
 set -g status-left "#[fg=#002b36,bg=#2aa198,bold] #S #[fg=#2aa198,bg=#002b36,nobold,nounderscore,noitalics]"
 set -g status-right "#[fg=#002b36,bg=#002b36,nobold,nounderscore,noitalics]#[fg=#93a1a1,bg=#002b36] #{prefix_highlight} #[fg=#073642,bg=#002b36,nobold,nounderscore,noitalics]#[fg=#93a1a1,bg=#073642] %Y-%m-%d  %I:%M %p #[fg=#2aa198,bg=#073642,nobold,nounderscore,noitalics]#[fg=#002b36,bg=#2aa198,bold] #h "
-if-shell '[ "$(tmux show-option -gqv "clock-mode-style")" == "24" ]' {
+if-shell -F '#{==:#{clock-mode-style},24}' {
   set -g status-right "#[fg=#002b36,bg=#002b36,nobold,nounderscore,noitalics]#[fg=#93a1a1,bg=#002b36] #{prefix_highlight} #[fg=#073642,bg=#002b36,nobold,nounderscore,noitalics]#[fg=#93a1a1,bg=#073642] %Y-%m-%d  %H:%M #[fg=#2aa198,bg=#073642,nobold,nounderscore,noitalics]#[fg=#002b36,bg=#2aa198,bold] #h "
 }
 
